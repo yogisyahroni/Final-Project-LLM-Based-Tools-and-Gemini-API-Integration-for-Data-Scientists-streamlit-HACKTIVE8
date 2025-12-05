@@ -1,0 +1,187 @@
+/* Premium Linear-like Dark Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global Reset & Font */
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter', sans-serif;
+    color: #eeeeee;
+    background-color: #0b0c0e;
+    /* Deep dark background */
+}
+
+/* Main App Background with Subtle Gradient */
+.stApp {
+    background: radial-gradient(circle at top left, #1a1d26 0%, #0b0c0e 40%);
+    background-attachment: fixed;
+}
+
+/* Sidebar - Glassmorphism */
+[data-testid="stSidebar"] {
+    background-color: rgba(18, 20, 24, 0.85);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Chat Message Containers */
+.stChatMessage {
+    background-color: transparent;
+    border: none;
+    padding: 1.5rem 0;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Avatar Styling */
+.stChatMessage .stChatMessageAvatar {
+    background-color: #5e6ad2;
+    /* Brand color */
+    color: white;
+    border-radius: 12px;
+}
+
+/* Message Content Bubble */
+[data-testid="stChatMessageContent"] {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    color: #d1d5db;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* User Message Specifics */
+[data-testid="stChatMessage"][data-testid="user"] {
+    background: linear-gradient(90deg, rgba(94, 106, 210, 0.1) 0%, transparent 100%);
+    border-left: 3px solid #5e6ad2;
+    padding-left: 20px;
+}
+
+/* Assistant Message Specifics */
+[data-testid="stChatMessage"][data-testid="assistant"] {
+    padding-left: 20px;
+}
+
+/* Input Field - Floating & Modern */
+.stChatInputContainer {
+    padding-bottom: 2rem;
+}
+
+.stChatInputContainer>div {
+    background-color: rgba(28, 31, 38, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(10px);
+    color: white !important;
+}
+
+.stChatInputContainer textarea {
+    color: #ffffff !important;
+    caret-color: #5e6ad2;
+}
+
+.stChatInputContainer button {
+    color: #5e6ad2 !important;
+}
+
+/* Buttons (Sidebar & General) */
+.stButton>button {
+    background: linear-gradient(135deg, #5e6ad2 0%, #4b55aa 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.stButton>button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(94, 106, 210, 0.4);
+}
+
+.stButton>button:active {
+    transform: translateY(0);
+}
+
+/* Selectbox & Inputs */
+.stSelectbox>div>div {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+}
+
+.stTextInput>div>div>input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+}
+
+/* Headers */
+h1 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(90deg, #ffffff 0%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Code Blocks */
+code {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+}
+
+.stCodeBlock {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
