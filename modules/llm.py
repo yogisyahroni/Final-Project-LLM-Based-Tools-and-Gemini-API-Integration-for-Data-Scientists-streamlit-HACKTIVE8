@@ -43,6 +43,11 @@ def validate_api_key(api_key, provider="OpenRouter"):
             client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=api_key)
             client.models.list()
             return True
+        elif provider == "Google":
+            # Google OpenAI compatible endpoint
+            client = OpenAI(base_url="https://generativelanguage.googleapis.com/v1beta/openai/", api_key=api_key)
+            client.models.list()
+            return True
     except Exception:
         return False
     return False

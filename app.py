@@ -3,7 +3,7 @@ import modules.db as db
 import modules.llm as llm
 import os
 
-# Trigger reload 9
+# Trigger reload 11
 # Page Config
 st.set_page_config(
     page_title="AI Chatbot",
@@ -36,7 +36,7 @@ with st.sidebar:
     
     # API Key Management
     st.subheader("Provider API")
-    api_provider = st.selectbox("Provider", ["OpenRouter", "Groq", "Other"], label_visibility="collapsed")
+    api_provider = st.selectbox("Provider", ["OpenRouter", "Groq", "Google", "Other"], label_visibility="collapsed")
     
     st.subheader(f"{api_provider} API Key")
     
@@ -92,6 +92,8 @@ with st.sidebar:
     base_url = "https://openrouter.ai/api/v1"
     if api_provider == "Groq":
         base_url = "https://api.groq.com/openai/v1"
+    elif api_provider == "Google":
+        base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
         
     # Model Selection
     st.subheader("Model")
@@ -105,6 +107,8 @@ with st.sidebar:
         model_options = st.session_state.openrouter_models
     elif api_provider == "Groq":
         model_options = ["llama3-8b-8192", "llama3-70b-8192", "mixtral-8x7b-32768", "gemma-7b-it"]
+    elif api_provider == "Google":
+        model_options = ["gemini-2.0-flash-exp", "gemini-1.5-flash", "gemini-1.5-pro", "gemini-1.5-flash-8b"]
 
     # Custom Searchable Dropdown using Popover
     if "selected_model" not in st.session_state:
@@ -120,8 +124,11 @@ with st.sidebar:
         else:
             filtered_models = model_options
             
-        # Limit to top 50 to maintain performance
-        display_models = filtered_models[:50]
+        # Limit to top 20 to maintain performance and UI height
+        display_models = filtered_models[:20]
+        
+        if len(filtered_models) > 20:
+            st.caption(f"Showing 20 of {len(filtered_models)} models. Type to search...")
         
         # Selection
         new_model = st.radio("Model List", display_models, label_visibility="collapsed", key="model_radio")
